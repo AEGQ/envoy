@@ -204,7 +204,7 @@ public:
   defaultFilterChainMessage() const {
     return default_filter_chain_message_;
   }
-  const Network::DrainableFilterChainSharedPtr& defaultFilterChain() const {
+  const std::shared_ptr<Network::DrainableFilterChain>& defaultFilterChain() const {
     return default_filter_chain_;
   }
 
@@ -318,7 +318,7 @@ private:
   absl::optional<envoy::config::listener::v3::FilterChain> default_filter_chain_message_;
   // The optional fallback filter chain if destination_ports_map_ does not find a matched filter
   // chain.
-  Network::DrainableFilterChainSharedPtr default_filter_chain_;
+  std::shared_ptr<Network::DrainableFilterChain> default_filter_chain_;
 
   // Mapping of FilterChain's configured destination ports, IPs, server names, transport protocols
   // and application protocols, using structures defined above.
