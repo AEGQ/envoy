@@ -1239,9 +1239,7 @@ void Context::onDownstreamConnectionClose(PeerType peer_type) {
   downstream_closed_ = true;
   // Call close on TCP connection, if upstream connection closed or there was a failure seen in this
   // connection.
-  if (upstream_closed_ || getRequestStreamInfo()->hasAnyResponseFlag()) {
-    onCloseTCP();
-  }
+  onCloseTCP();
 }
 
 void Context::onUpstreamConnectionClose(PeerType peer_type) {
